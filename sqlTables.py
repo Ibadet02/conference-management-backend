@@ -4,9 +4,9 @@ from mysql.connector import errorcode
 # Replace with your MySQL database public URL details
 DB_CONFIG = {
     'user': "root",
-    'password': "NfapeJSPgRWCzuxlrVcrPYpqESiYfZKU",
-    'host': "junction.proxy.rlwy.net",
-    'port': 28459,
+    'password': "uBxlxJwNAScxaUIXTcssslqyxCEqHzhh",
+    'host': "autorack.proxy.rlwy.net",
+    'port': 18220,
     'database': "railway",
 }
 
@@ -131,22 +131,21 @@ TABLES['reviews'] = """
 
 # Connect to MySQL and create tables
 try:
-    connection = mysql.connector.connect(**DB_CONFIG)
-    cursor = connection.cursor()
-    cursor.execute("ALTER TABLE authorUsers CHANGE COLUMN actualState actualState INT")
+    # cursor.execute("ALTER TABLE authorUsers CHANGE COLUMN actualState actualState INT")
     # cursor.execute("""
     # DROP DATABASE IF EXISTS railway;""")
-    # for table_name, ddl in TABLES.items():
-   
-    #     try:
-    #         print(f"Creating table {table_name}...")
-    #         cursor.execute(ddl)
-    #         print(f"Table {table_name} created successfully.")
-    #     except mysql.connector.Error as err:
-    #         if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
-    #             print(f"Table {table_name} already exists.")
-    #         else:
-    #             print(f"Error creating table {table_name}: {err}")
+    for table_name, ddl in TABLES.items():
+        connection = mysql.connector.connect(**DB_CONFIG)
+        cursor = connection.cursor()
+        try:
+            print(f"Creating table {table_name}...")
+            cursor.execute(ddl)
+            print(f"Table {table_name} created successfully.")
+        except mysql.connector.Error as err:
+            if err.errno == errorcode.ER_TABLE_EXISTS_ERROR:
+                print(f"Table {table_name} already exists.")
+            else:
+                print(f"Error creating table {table_name}: {err}")
     connection.commit()
         # connection.commit()
         # cursor.close()

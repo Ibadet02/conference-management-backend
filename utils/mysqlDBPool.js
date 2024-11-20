@@ -3,7 +3,7 @@ const mysql = require("mysql2");
 
 // Create a connection to the database using environment variables
 const dbConnection = mysql.createConnection(
-  "mysql://root:NfapeJSPgRWCzuxlrVcrPYpqESiYfZKU@junction.proxy.rlwy.net:28459/railway"
+  "mysql://root:uBxlxJwNAScxaUIXTcssslqyxCEqHzhh@autorack.proxy.rlwy.net:18220/railway"
 );
 
 // Open a connection to the database
