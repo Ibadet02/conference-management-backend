@@ -1,0 +1,8 @@
+{
+  "token_error_message": "A token is required for authentication",
+  "missing_credentials_message": "Missing credentials",
+  "invalid_credentials_message": "Invalid credentials",
+  "user_deleted_message": "Unfortunatly, your account has been deleted",
+  "invalid_content_type": "Invalid Content-Type. Expected application/json.",
+  "missing_body_fields": "Missing required fields"
+}
