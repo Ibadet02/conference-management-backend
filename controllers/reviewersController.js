@@ -61,7 +61,7 @@ module.exports.getReviewer = catchAsync(async (req, res, next) => {
       ) END AS review
     FROM submittedPapers
     JOIN abstracts ON submittedPapers.abstractId = abstracts.id
-    LEFT JOIN reviews ON submittedPapers.id = reviews.paperId
+    LEFT JOIN reviews ON submittedPapers.id = reviews.paperId and reviews.reviewerId = ?
     WHERE FIND_IN_SET(?, assignedReviewers)`,
     [id]
   );
