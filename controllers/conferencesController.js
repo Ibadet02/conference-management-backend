@@ -24,18 +24,6 @@ module.exports.createConference = catchAsync(async (req, res, next) => {
   const { title, topic, description, deadline } = req.body;
   const { startDate, endDate } = deadline;
   const createdOn = new Date().toISOString();
-  // TABLES['conferences']= """
-  // CREATE TABLE `conferences` (
-  //   `id` VARCHAR(255) PRIMARY KEY,
-  //   `title` VARCHAR(255),
-  //   `topic` VARCHAR(255),
-  //   `description` TEXT,
-  //   `createdOn` DATETIME,
-  //   `deadlineStartDate` DATETIME,
-  //   `deadlineEndDate` DATETIME,
-  //   `canApply` VARCHAR(255)
-  // )
-  // """
   const [conference] = await mysqlDBPool
     .promise()
     .query(

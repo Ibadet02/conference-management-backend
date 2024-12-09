@@ -76,18 +76,6 @@ module.exports.getReviewer = catchAsync(async (req, res, next) => {
       toBeReviewedPapers.push(submission);
     }
   });
-  // submissions.map((submission) => ({
-  //     ...submission,
-  //     authors: submission.authors ? submission.authors.split(",") : [],
-  //     assignedReviewers: submission.assignedReviewers
-  //       ? submission.assignedReviewers.split(",")
-  //       : [],
-  //     projectId: submission.conferenceId,
-  //     correspondingAuthor: submission.correspondingAuthorId,
-  //     reviewerId: reviewer.reviewerId || reviewer.id,
-  //     id: reviewer.reviewerId || reviewer.id,
-  //   })) || [];
-  // add field to check if the reviewer has already reviewed the paper or not
 
   return res.status(200).json({
     success: true,
@@ -119,20 +107,6 @@ module.exports.getReviewer = catchAsync(async (req, res, next) => {
             ...submission.review,
           })) ?? [],
       },
-      // submissions.map((submission) => ({
-      //   ...submission,
-      //   authors: submission.authors ? submission.authors.split(",") : [],
-      //   assignedReviewers: submission.assignedReviewers
-      //     ? submission.assignedReviewers.split(",")
-      //     : [],
-      //   projectId: submission.conferenceId,
-      //   correspondingAuthor: submission.correspondingAuthorId,
-      //   reviewerId: reviewer.reviewerId || reviewer.id,
-      //   id: reviewer.reviewerId || reviewer.id,
-      // })) || [],
     },
   });
 });
-/**
- *
- */

@@ -4,30 +4,6 @@ const catchAsync = require("../utils/catchAsync");
 const { re } = require("prettier");
 
 module.exports.createSubmission = catchAsync(async (req, res, next) => {
-  /**
- *  abstracts (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    abstract TEXT,
-    abstractApproved BOOLEAN,       
-    abstractUpdated BOOLEAN
-);
-submittedPapers (
-        id INT AUTO_INCREMENT PRIMARY KEY,
-        fileId VARCHAR(255),
-        abstractId INT,
-        conferenceId VARCHAR(255),
-        paperUpdateRequest BOOLEAN,
-        assignedReviewers TEXT,
-        finalResult VARCHAR(50),
-        correspondingAuthorId VARCHAR(255),
-        adminResponseMade BOOLEAN,
-        authors TEXT,
-        academicInterest TEXT,
-        FOREIGN KEY (conferenceId) REFERENCES conferences(id),
-        FOREIGN KEY (abstractId) REFERENCES abstracts(id),
-        FOREIGN KEY (correspondingAuthorId) REFERENCES authorUsers(authorId)
-    )
- */
   const {
     abstract,
     authors,

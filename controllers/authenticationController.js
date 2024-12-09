@@ -65,54 +65,6 @@ module.exports.login = catchAsync(async (req, res, next) => {
 });
 module.exports.register = catchAsync(async (req, res, next) => {
   const lang = req.headers["language"] ?? "en";
-  /**{
-    "firstName": "Fathy",
-    "lastName": "nabil",
-    "affiliation": {
-        "options": [
-            "BME AUT",
-            "BME Industry 4.0 Technology Center",
-            "Other"
-        ],
-        "selectedOption": "BME AUT"
-    },
-    "email": "fathy.nabil2022@gmail.com",
-    "phone": "+20 11 56186111",
-    "academicInterest": {
-        "options": [
-            "Energetics, Industry 4.0",
-            "Robotics",
-            "Power Electronics",
-            "Hardware Design",
-            "Data Mining and Intelligent Systems",
-            "Digitalization and Digital Transformations",
-            "Machine Learning and Artificial Intelligence",
-            "Graph and Model Transformation",
-            "Metamodeling and Domain-Specific Languages",
-            "Mobile and Distributed Systems",
-            "Computer Graphics and Image Recognition",
-            "Control Theory, Control Engineering",
-            "Other"
-        ],
-        "selectedOption": "Power Electronics"
-    },
-    "reviewCapacity": {
-        "options": [
-            2,
-            3,
-            4,
-            5
-        ],
-        "selectedOption": 2
-    },
-    "password": "ADMIN01",
-    "confirmPassword": "ADMIN01"
-     program VARCHAR(50),
-        supervisor VARCHAR(255),
-        myStatus VARCHAR(50),
-        actualState VARCHAR(50),
-        paperUpdated BOOLEAN,
-} */
   const {
     user_name,
     password,
@@ -156,17 +108,6 @@ module.exports.register = catchAsync(async (req, res, next) => {
       new AppError("User could not be created. Please try again later!", 500)
     );
   }
-  /**CREATE TABLE IF NOT EXISTS reviewerUsers (
-         `reviewerId` VARCHAR(255) PRIMARY KEY,
-  `firstName` VARCHAR(255),
-  `lastName` VARCHAR(255),
-  `email` VARCHAR(255),
-  `phone` VARCHAR(255),
-  `academicInterest` VARCHAR(255),
-  `affiliation` VARCHAR(255),
-  `reviewCapacity` INT,
-   FOREIGN KEY (reviewerId) REFERENCES users(id)
-    ) */
   if (type === "reviewer") {
     const [result2] = await dbConnection
       .promise()
@@ -187,21 +128,6 @@ module.exports.register = catchAsync(async (req, res, next) => {
       return next(new AppError("Reviewer data error", 500));
     }
   } else if (type === "author") {
-    /**CREATE TABLE IF NOT EXISTS authorUsers (
-        authorId VARCHAR(255) PRIMARY KEY,
-        firstName VARCHAR(255),
-        lastName VARCHAR(255),
-        email VARCHAR(255) UNIQUE,
-        phone VARCHAR(255),
-        academicInterest VARCHAR(255),
-        affiliation VARCHAR(255),
-        program VARCHAR(50),
-        supervisor VARCHAR(255),
-        myStatus VARCHAR(50),
-        actualState VARCHAR(50),
-        paperUpdated BOOLEAN,
-        FOREIGN KEY (authorId) REFERENCES users(id)
-    ) */
     const [result2] = await dbConnection.promise().query(
       `
       INSERT INTO authorUsers (
